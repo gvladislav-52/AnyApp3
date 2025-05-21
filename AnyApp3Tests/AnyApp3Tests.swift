@@ -15,7 +15,7 @@ final class AnyApp3Tests: XCTestCase {
     }
     
     func testMinus() {
-        XCTAssertEqual(2-2, 0)
+        XCTAssertEqual(3-3, 0)
     }
 
 }
