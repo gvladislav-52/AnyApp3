@@ -25,9 +25,13 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
 
       - name: Install Bundler
-        run: gem install bundler
+        run: |
+          gem uninstall -i $(gem env gemdir) bundler -a -x || true
+          gem install bundler -v 2.4.22
 
       - name: Install Gems
         run: bundle install
@@ -49,4 +53,3 @@ jobs:
       - name: Run Tests (Cache)
         if: steps.cache.outputs.cache-hit == 'true'
         run: bundle exec fastlane unit_test skip_package_dependencies_resolution:true
-
